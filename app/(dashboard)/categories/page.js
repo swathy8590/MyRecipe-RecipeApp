@@ -35,10 +35,9 @@ export default function Catogaries() {
 
         if (confirm("Are you sure you want to delete this item?")) {
             try {
-                const res = await axios.delete("/api/categoryDelete", {
+                const res = await axios.delete("/api/categorieDelete", {
                     data: { id: id }
                 });
-                console.log(res.data);
                 setMessage(prev => !prev);
             } catch (error) {
                 console.error("Error deleting ingredient:", error);

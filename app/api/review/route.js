@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { dbConnect } from "@/app/libi/db";
 import { reviewModel } from "@/app/models/models";
 
-export async function POST(req) {
+
+export async function POST(req, res) {
     try {
         await dbConnect();
 
@@ -25,12 +26,16 @@ export async function POST(req) {
             success: true,
             data: reviewResult,
         });
+
     } catch (error) {
         return NextResponse.json({
             success: false,
             error: error.message || "Failed to add review",
         });
     }
+
+
+
 }
 
 
@@ -38,12 +43,17 @@ export async function GET(req, res) {
     await dbConnect();
 
     const reviewResult = await reviewModel.find()
-
-
     return NextResponse.json({
-        massage: 'hello',
-        data: reviewResult
+        massage: true,
+        data: reviewResult,
+
+
     })
+
+
+
+
+
 
 
 }

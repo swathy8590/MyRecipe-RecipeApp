@@ -77,7 +77,7 @@ export default function RecipeList() {
 
     const buttonStyle = {
         color: "blue",
-        fontSize: "1rem",
+        fontSize: "10px",
     };
 
     function stripHtml(html) {

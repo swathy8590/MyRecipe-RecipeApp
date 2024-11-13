@@ -62,9 +62,12 @@ export default function Home() {
     return (
       <>
         <div className="bg-gray-200 w-full h-screen flex items-center">
-          <div className="w-[70%] mx-auto  p-5 bg-white text-left border-solid border-gray-100 rounded-xl h-[70%] drop-shadow-lg  flex gap-5">
-            <div className="w-[50%] h-full bg-green-100"></div>
-            <div className="flex flex-col ps-10 pt-16 w-[50%]">
+          <div className="w-[60%] mx-auto  p-5 bg-white text-left border-solid border-gray-100 rounded-xl h-[70%] drop-shadow-lg  flex gap-5">
+            <div className="w-[45%] h-full bg-green-100">
+
+              <img src={`/asset/adminlogin.jpg`} className='w-[100%] h-[100%]' />
+            </div>
+            <div className="flex flex-col ps-10 pt-16 w-[55%]">
               <h1 className=" text-2xl font-semibold mb-8 text-gray-800">ADMIN LOGIN</h1>
               <form onSubmit={handleSubmit} method="post">
                 <div className="pb-8 ">
@@ -97,6 +100,8 @@ export default function Home() {
               </div>
 
             </div>
+
+
 
           </div>
 

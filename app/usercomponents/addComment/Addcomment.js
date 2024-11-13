@@ -4,11 +4,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
+import { redirect, useRouter } from 'next/navigation'
 
-export default function AddComment({ recipeId, setUserComment, setGetReview, getReview }) {
+export default function AddComment({ recipeId, setGetReview, getReview }) {
     const { data, status } = useSession();
     const [user, setUser] = useState();
     const [userName, setUserName] = useState();
+    const router = useRouter()
+    const [userComment, setUserComment] = useState(false)
 
     useEffect(() => {
         axios.get("/api/getuser").then((response) => setUser(response.data.data)
@@ -18,7 +21,7 @@ export default function AddComment({ recipeId, setUserComment, setGetReview, get
 
 
     useEffect(() => {
-        status === "unauthenticated" || data?.user?.role !== "user" || data === null && router.push("/landingpage")
+        status === "unauthenticated" || data === null && router.push("/home")
 
     }, [status, data])
     const userId = data?.user?.email
@@ -34,15 +37,6 @@ export default function AddComment({ recipeId, setUserComment, setGetReview, get
         }
     }, [user, userId]);
 
-
-
-    console.log(userName)
-
-
-
-
-
-
     const userComments = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -50,17 +44,17 @@ export default function AddComment({ recipeId, setUserComment, setGetReview, get
         formData.append("recipe_id", recipeId);
         formData.append("name", userName);
 
-        // comment: String,
-        // name: String,
-        // user_id: String,
-        // recipe_id: String,
 
 
         try {
-            axios.post("api/review", formData).then((response) => {
+            axios.post("../api/review", formData).then((response) => {
                 if (response.data.success === true) {
-                    setUserComment(false)
+                    setUserComment(true)
                     setGetReview(!getReview)
+
+
+                    router.push(`../recipes/${recipeId}`)
+
 
 
                 }
@@ -73,52 +67,59 @@ export default function AddComment({ recipeId, setUserComment, setGetReview, get
 
     }
 
-    if (status === "authenticated" && data.user.role === "user" && data !== null) {
-        return (
-            <>
-                <div className=" bg-black bg-opacity-50 z-70 w-full top-[-60px] left-0 h-screen flex items-center fixed my-[100px]">
-
-
-
-                    <div className="w-[50%] mx-auto p-10 bg-white shadow-md relative">
-                        <h1 className="text-2xl font-bold  mb-[33px]  ">Add Your Reviews</h1>
-                        <button className="absolute right-10 top-[40px]"
-                            onClick={() => setUserComment(false)}><XMarkIcon className="size-6 " /></button>
-                        <form onSubmit={userComments}>
-
-
-                            <div className="mb-14">
-                                {/* <label className="block mb-2 font-semibold  text-md">COMMENT</label> */}
-                                <div className="flex items-center gap-4">
-
-                                    <textarea
-                                        name='comment'
-                                        placeholder='add your comment'
-                                        className="p-2 border rounded-md border-[#a96363]  w-full "
-
-                                    />
-                                </div>
-                            </div>
-
-                            <div className='text-end mb-5'>
-                                <button
-                                    type='submit'
-                                    className="bg-[#c15f5f] text-white px-4 py-2 rounded-md mt-2 "
-                                >
-                                    Upload comment
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
-
-
-
-
-                </div>
-
-
-            </>
-        )
+    if (userComment) {
+        setTimeout(() => {
+            setUserComment(false);
+        }, 5000);
     }
+
+    // if (status === "authenticated" && data !== null) {
+    return (
+        <>
+            {/* <div className=" bg-black bg-opacity-50 z-70 w-full top-[-60px] left-0 h-screen flex items-center fixed my-[100px]"> */}
+
+
+
+            <div className="w-[75%] my-10 mx-auto p-10 bg-white shadow-md relative">
+                {status === "authenticated" && data !== null ? <div>
+                    < h1 className="text-2xl font-bold  mb-[33px]  ">Add Your Reviews</h1>
+                    <form onSubmit={userComments}>
+
+
+                        <div className="mb-14">
+                            <div className="flex items-center gap-4">
+
+                                <textarea
+                                    required
+                                    name='comment'
+                                    placeholder='add your comment'
+                                    className="p-2 border rounded-md border-[#a96363]  w-full "
+
+                                />
+                            </div>
+                            {userComment && <div className='text-center mt-4'>Comment added successfully.</div>}
+                        </div>
+
+                        <div className='text-end mb-5'>
+                            <button
+                                type='submit'
+                                className="bg-[#c15f5f] text-white px-4 py-2 rounded-md mt-2 "
+                            >
+                                Upload comment
+                            </button>
+                        </div>
+
+                    </form>
+                </div> : <div>Please log in to add a comment.</div>}
+            </div >
+
+
+
+
+            {/* </div> */}
+
+
+        </>
+    )
+    // }
 }
