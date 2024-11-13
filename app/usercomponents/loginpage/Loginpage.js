@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ClimbingBoxLoader, RingLoader } from "react-spinners";
 
 
 export default function Loginpage({ setLogin }) {
@@ -26,7 +27,7 @@ export default function Loginpage({ setLogin }) {
 
         }
         if (res?.ok) {
-            return router.push("/landingpage");
+            return router.push("/home");
         }
 
     };
@@ -35,12 +36,21 @@ export default function Loginpage({ setLogin }) {
 
     useEffect(() => {
 
-        status === "authenticated" && router.push("/landingpage");
+        status === "authenticated" && router.push("/home");
 
     }, [status, data])
 
     if (status === "loading") {
-        return <div>Loading</div>
+        return <div className='flex justify-center'><ClimbingBoxLoader
+
+            color="#ff0202"
+            cssOverride={{}}
+            loading
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+
+        /></div>
     }
 
     if (status === "unauthenticated"
@@ -55,7 +65,11 @@ export default function Loginpage({ setLogin }) {
 
                     <div className="w-[70%] mx-auto  p-5 bg-white text-left border-solid border-gray-100 rounded-xl h-[70%] drop-shadow-lg  flex gap-5">
                         <button className="absolute right-10" onClick={() => setLogin(false)}><XMarkIcon className="size-6 " /></button>
-                        <div className="w-[50%] h-full bg-red-50"></div>
+                        <div className="w-[50%] h-full  ">
+                            <img src={`/asset/loginimage.jpg`} className='w-[100%] h-[100%]' />
+                            <div className="bg-red-500 z-40 w-[499px] h-[477px] absolute top-[20px] bg-opacity-40"></div>
+
+                        </div>
 
                         <div className="flex flex-col ps-10 pt-16 w-[50%]">
 
@@ -68,7 +82,7 @@ export default function Loginpage({ setLogin }) {
                                         placeholder="email"
                                         type='text'
                                         required
-                                        className="border-solid border-[#b55] border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
+                                        className="border-solid border-[#b55]  drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
 
                                 </div>
                                 <div className="pb-8">
@@ -77,13 +91,13 @@ export default function Loginpage({ setLogin }) {
                                         placeholder="password"
                                         type='password'
                                         required
-                                        className="border-solid border-[#b55] border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
+                                        className="border-solid border-[#b55]  drop-shadow-md border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
 
                                 </div>
 
                                 <div>
                                     <button
-                                        className="border-solid border-gray-300 border-[1px] w-[75%] h-[44px] rounded-lg bg-[#b55] text-white"
+                                        className="border-solid border-gray-300 border-[1px] w-[75%] h-[44px] rounded-lg bg-[#b55]  text-white"
                                     >Login</button>
                                 </div>
                             </form>

@@ -1,4 +1,5 @@
 import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Headerpage({ loginToggle, signUpToggle }) {
@@ -8,7 +9,7 @@ export default function Headerpage({ loginToggle, signUpToggle }) {
     const logoutFn = () => {
 
         signOut({ redirect: false }).then(() => {
-            router.push("/landingpage");
+            router.push("/home");
         });
     }
     return (
@@ -18,12 +19,12 @@ export default function Headerpage({ loginToggle, signUpToggle }) {
                 <div className="text-2xl font-bold">
                     <span className="text-gray-800">MY</span><span className="text-red-500">Recipe</span>
                 </div>
-                <nav className="flex space-x-6 font-semibold">
-                    <a href="#" className="text-gray-700">Home</a>
-                    <a href="#" className="text-gray-700">Recipe</a>
-                    <a href="#" className="text-gray-700">Add Recipe</a>
-                    <a href="#" className="text-gray-700">Blog</a>
-                    <a href="#" className="text-gray-700">About us</a>
+                <nav className=" font-semibold">
+                    <ul className="flex space-x-6">
+                        <li><Link href={"/home"} className='pb-5'>Home</Link></li>
+                        <li><Link href={"/recipes"} className='mb-5'> Recipe</Link></li>
+                        <li><Link href={"createrecipe/"} className='mb-5'>Add Recipe</Link></li>
+                    </ul>
                 </nav>
                 <div className="flex gap-4">
                     {

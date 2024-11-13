@@ -9,12 +9,13 @@ import { useSession } from "next-auth/react";
 
 import Link from "next/link";
 import AddComment from "@/app/usercomponents/addComment/Addcomment";
-import { PageContext } from "../layout";
+import { PageContext } from "../../layout";
+import { RingLoader } from "react-spinners";
+
 
 export default function Recipes({ params }) {
     const [review, setReview] = useState()
     const [recipes, setRecipes] = useState()
-    const [userComment, setUserComment] = useState(false)
     const [getReview, setGetReview] = useState()
     const htmlParser = new Parser();
     const { data, status } = useSession();
@@ -30,28 +31,38 @@ export default function Recipes({ params }) {
         )
     }, [getReview])
 
-    const addComment = () => {
-        if (data?.user?.role !== "user" || data === null
-            || status === "unauthenticated") {
-            loginStatus.setLogin(true)
-        } else {
-            setUserComment(true)
+    // const addComment = () => {
+    //     if (data === null
+    //         || status === "unauthenticated") {
+    //         loginStatus.setLogin(true)
+    //     } else {
+    //         setUserComment(true)
 
-        }
-    }
+    //     }
+    // }
     const { recipename } = params
+
+    if (status === "loading") {
+        return <RingLoader
+            color="#ff0202"
+            cssOverride={{}}
+            loading
+            speedMultiplier={0}
+        />
+    }
+
     return (
         <>
 
 
             {recipes && recipes.map((value, index) =>
-                value.title === recipename &&
+                value._id === recipename &&
 
                 <div key={index} className='pe-5 py-1 '>
                     <div className="pt-20 ">
 
                         <div className="mx-auto w-[75%]  drop-shadow-lg bg-zinc-50 p-10 rounded-lg border-[1px] border-gray-200 ">
-                            <h1 className="text-3xl font-bold text-center pb-8 ">{value.title}</h1>
+
                             <div className=" flex">
 
                                 <div className=' flex flex-col rounded-md px-4 w-[40%]  '>
@@ -72,18 +83,19 @@ export default function Recipes({ params }) {
                                 </div>
 
                                 <div className="ms-3 w-[50%]" >
+                                    <h1 className="text-3xl font-bold mb-5">{value.title}</h1>
                                     <ul>
                                         <li className=' text-md '><span className=" font-semibold  text-lg">Instructions:</span>{htmlParser.parse(value.instructions)}</li>
                                     </ul>
-                                    <div className="text-right">
+                                    {/* <div className="text-right">
 
                                         <button onClick={addComment} className="mt-4 px-3 py-2 bg-[#b55] text-white rounded-md ">add review</button>
 
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
-                        {userComment && <AddComment recipeId={value._id} setUserComment={setUserComment} setGetReview={setGetReview} getReview={getReview} />}
+                        <AddComment recipeId={value._id} setGetReview={setGetReview} getReview={getReview} />
 
 
                         <div className="mx-auto w-[75%] mt-10 bg-gradient-to-br from-zinc-100 to-white p-10 rounded-lg shadow-lg h-auto ">
@@ -108,7 +120,7 @@ export default function Recipes({ params }) {
                                                         </p>
                                                     </div>
                                                     <p className="text-xl mt-4 text-gray-600 italic pl-4 border-l-4 border-gray-300">
-                                                        "{rval.comment}"
+                                                        {rval.comment}
                                                     </p>
                                                 </div>
                                             )

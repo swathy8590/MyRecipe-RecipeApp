@@ -3,23 +3,39 @@ import { Select, SelectItem } from '@nextui-org/select';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import CreatableSelect from 'react-select/creatable';
+import { PageContext } from '../layout';
+import { ClimbingBoxLoader } from 'react-spinners';
 
 
 export default function Createrecipe() {
-    const router = useRouter();
     const { data, status } = useSession();
+    const loginStatus = useContext(PageContext);
+    const router = useRouter();
 
     const [instructions, setInstructions] = useState('');
     const [file, setFile] = useState(null);
     const [selectedIngredient, setSelectedIngredient] = useState([]);
     const [ingredientOption, setIngredientOption] = useState();
-    const [first, setfirst] = useState()
+    const [ingredientUpdate, setIngredientUpdate] = useState()
     const [category, setCategory] = useState([]);
     const [categoryData, setCategoryData] = useState([])
+
+
+
+    useEffect(() => {
+        if (data === null
+            || status === "unauthenticated") {
+            router.push("/home");
+            loginStatus.setLogin(true)
+        }
+    }, [])
+
+
+
 
 
     const handleChange = (newValue) => {
@@ -31,13 +47,13 @@ export default function Createrecipe() {
             try {
                 axios.post("api/userIngredient", filterValue).then((response) => {
                     if (response.data.message === true) {
-                        setfirst(!first)
+                        setIngredientUpdate(!ingredientUpdate)
                     }
                 }
                 );
 
             } catch (error) {
-                // console.error("Error submitting data:", error);
+                console.error("Error submitting data:", error);
             }
         }
 
@@ -46,7 +62,7 @@ export default function Createrecipe() {
     const selectedIngredientValues = selectedIngredient.map(option => option.value);
 
     useEffect(() => {
-        status === "unauthenticated" || data === null && router.push("/landingpage")
+        status === "unauthenticated" || data === null && router.push("/home")
 
     }, [status, data])
 
@@ -65,10 +81,19 @@ export default function Createrecipe() {
             setIngredientOption(response.data.data)
         }
         )
-    }, [first])
+    }, [ingredientUpdate])
 
     if (status === "loading") {
-        return <div>Loading</div>
+        return <div className='flex justify-center'><ClimbingBoxLoader
+
+            color="#ff0202"
+            cssOverride={{}}
+            loading
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+
+        /></div>
     }
     const handleImageUpload = (event) => {
         setFile(event.target.files[0]);
@@ -94,7 +119,12 @@ export default function Createrecipe() {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
-            });
+
+            })
+            if (response.data.message === true) {
+
+                router.push(`/home`)
+            }
         } catch (error) {
             // console.error("Error submitting data:", error);
         }
@@ -108,6 +138,7 @@ export default function Createrecipe() {
                 <div className="">
                     <div className=' bg-white shadow-md py-5 ps-14 flex items-center mb-6 border border-gray-50 justify-between pe-10'>
                         <h1 className="text-2xl font-bold  ">Create New Recipe</h1>
+
                     </div>
                     <div className="max-w-[50%] mx-auto p-10 bg-white shadow-md">
                         <form onSubmit={userRecipeSubmit}>
