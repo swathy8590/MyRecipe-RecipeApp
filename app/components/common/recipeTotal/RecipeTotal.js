@@ -6,7 +6,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 // Import Linechart dynamically with SSR disabled
-const Linechart = dynamic(() => import('../../linechart/Linechart'), { ssr: false });
+const Linechart = dynamic(() => import('../../linechart/Linechart').then((mod) => mod.Linechart), { ssr: false });
 
 export const RecipeTotal = () => {
     const [chartCount, setChartCount] = useState(null);

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import axios from 'axios';
 
 // Dynamically import ColumnChart with server-side rendering disabled
-const ColumnChart = dynamic(() => import('../../columnchart/ColumnChart'), { ssr: false });
+const ColumnChart = dynamic(() => import('../../columnchart/ColumnChart').then((mod) => mod.ColumnChart), { ssr: false });
 
 export const ReviewTotal = () => {
     const [review, setReview] = useState(null);

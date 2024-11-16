@@ -4,8 +4,10 @@ import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 
-// Dynamically import UsersChart with SSR disabled
-const UsersChart = dynamic(() => import('../../usersChart/UsersChart'), { ssr: false });
+
+
+const UsersChart = dynamic(() => import('../../usersChart/UsersChart').then((mod) => mod.UsersChart), { ssr: false });
+
 
 export const TotalUsers = () => {
     const [users, setUser] = useState(null);
