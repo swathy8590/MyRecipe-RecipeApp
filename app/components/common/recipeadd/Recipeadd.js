@@ -3,14 +3,24 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import ImageUploading from 'react-images-uploading';
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-export default function RecipeAdd({ setMessage, setadd }) {
+import dynamic from 'next/dynamic';
+
+
+const ReactQuill = dynamic(
+    () => {
+        return import('react-quill');
+    },
+    { ssr: false }
+);
+
+export function RecipeAdd({ setMessage, setadd }) {
     const [category, setCategory] = useState([]);
     const [IngredientData, setIngredientData] = useState([]);
     const [file, setFile] = useState(null);
@@ -86,14 +96,14 @@ export default function RecipeAdd({ setMessage, setadd }) {
                                     required
                                 />
                             </div>
-                            <div className="relative">
+                            <div className="flex flex-col">
                                 <label className="mb-2">Ingredients</label>
                                 <Select
                                     name="ingredients"
                                     isRequired
                                     placeholder="Select ingredients"
                                     aria-label="ingredients"
-                                    className="rounded-md border-solid border-gray-200 border-[1px] custom-select h-11 w-full pt-1"
+                                    className="rounded-md border-solid border-gray-200 border-[1px] custom-select h-11 w-full pt-1 "
                                     selectionMode="multiple"
                                     dropdownPlacement="right"
                                     labelPlacement="outside"
@@ -103,7 +113,7 @@ export default function RecipeAdd({ setMessage, setadd }) {
                                     }}
                                 >
                                     {ingredients.map((ingredient) => (
-                                        <SelectItem key={ingredient.label} value={ingredient.value} className="bg-gray-100 p-2">
+                                        <SelectItem key={ingredient.label} value={ingredient.value} className="bg-[#3c4d64] text-gray-100 p-2">
                                             {ingredient?.value}
                                         </SelectItem>
                                     ))}
@@ -111,7 +121,7 @@ export default function RecipeAdd({ setMessage, setadd }) {
                             </div>
 
                             <div className="relative">
-                                <label className="mb-2">Categories</label>
+                                <label className="mb-3">Categories</label>
                                 <Select
                                     name="categories"
                                     isRequired
@@ -127,7 +137,7 @@ export default function RecipeAdd({ setMessage, setadd }) {
                                     }}
                                 >
                                     {category.map((value) => (
-                                        <SelectItem key={value.category} value={value.description} className="bg-gray-100 p-2">
+                                        <SelectItem key={value.category} value={value.description} className="bg-[#3c4d64] text-gray-100  p-2">
                                             {value.description}
                                         </SelectItem>
                                     ))}

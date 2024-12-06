@@ -9,8 +9,8 @@ import { useSession } from 'next-auth/react'
 
 
 
-const Mainpage = ({ login, setLogin }) => {
-    const [signup, setsignup] = useState(false)
+const Mainpage = ({ login, setLogin, setsignup, signup }) => {
+
     const { data, status } = useSession();
 
 

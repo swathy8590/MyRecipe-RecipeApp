@@ -4,7 +4,15 @@
 import { Select, SelectItem } from '@nextui-org/select';
 import axios from 'axios';
 import React, { useState } from 'react'
-import ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic';
+
+
+const ReactQuill = dynamic(
+    () => {
+        return import('react-quill');
+    },
+    { ssr: false }
+);
 
 
 export const RecipeEdit = ({ editIndex, index, value, setEditIndex, categorie, ingredients, setRecipeUpdations, recipeUpdations }) => {

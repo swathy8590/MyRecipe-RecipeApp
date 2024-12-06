@@ -4,11 +4,20 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from 'react'
-import ReactQuill from 'react-quill';
+// import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import CreatableSelect from 'react-select/creatable';
 import { PageContext } from '../layout';
 import { ClimbingBoxLoader } from 'react-spinners';
+import dynamic from 'next/dynamic';
+
+
+const ReactQuill = dynamic(
+    () => {
+        return import('react-quill');
+    },
+    { ssr: false }
+);
 
 
 export default function Createrecipe() {
@@ -135,7 +144,7 @@ export default function Createrecipe() {
 
         return (
             <>
-                <div className="">
+                <div className=" text-black">
                     <div className=' bg-white shadow-md py-5 ps-14 flex items-center mb-6 border border-gray-50 justify-between pe-10'>
                         <h1 className="text-2xl font-bold  ">Create New Recipe</h1>
 

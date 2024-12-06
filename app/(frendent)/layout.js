@@ -33,15 +33,16 @@ export const PageContext = createContext(null);
 export default function RootLayout({ children }) {
   // const [open, setOpen] = useState(false);
   const [login, setLogin] = useState(false);
+  const [signup, setsignup] = useState(false)
 
   return (
     <html lang="en">
-      <PageContext.Provider value={{ login: login, setLogin: setLogin }}>
+      <PageContext.Provider value={{ login: login, setLogin: setLogin, signup: signup, setsignup: setsignup }}>
         <Provider>
           <body
           >
             <div className="h-auto bg-white  roboto-medium">
-              <Mainpage login={login} setLogin={setLogin} />
+              <Mainpage login={login} setLogin={setLogin} signup={signup} setsignup={setsignup} />
               <div >
 
                 {children}

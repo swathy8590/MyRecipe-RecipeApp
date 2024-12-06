@@ -73,19 +73,19 @@ export default function Recipes({ params }) {
                                         height={300}
                                         className='w-[350px] h-[300px] rounded-md' />
 
-                                    <div className=' pt-3 '>
-                                        <span className=" font-semibold  text-lg" >Categorie:</span>{value.categories}
+                                    <div className=' pt-3   text-black'>
+                                        <span className=" font-semibold  text-lg " >Categorie:</span>{value.categories.join(', ')}
                                     </div>
-                                    <div className='pt-2'>
-                                        <span className=" font-semibold  text-lg">Ingredients:</span>{value.ingredients.join(', ')}
+                                    <div className='pt-2  text-black'>
+                                        <span className=" font-semibold  text-lg ">Ingredients:</span>{value.ingredients.join(', ')}
                                     </div>
 
                                 </div>
 
                                 <div className="ms-3 w-[50%]" >
-                                    <h1 className="text-3xl font-bold mb-5">{value.title}</h1>
+                                    <h1 className="text-3xl font-bold mb-5 text-black ">{value.title}</h1>
                                     <ul>
-                                        <li className=' text-md '><span className=" font-semibold  text-lg">Instructions:</span>{htmlParser.parse(value.instructions)}</li>
+                                        <li className=' text-md text-black '><span className=" font-semibold  text-lg">Instructions:</span>{htmlParser.parse(value.instructions)}</li>
                                     </ul>
                                     {/* <div className="text-right">
 

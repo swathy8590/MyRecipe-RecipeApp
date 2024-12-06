@@ -4,7 +4,17 @@
 import axios from 'axios'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
-import Chart from 'react-apexcharts'
+// import Chart from 'react-apexcharts'
+
+import dynamic from 'next/dynamic';
+
+
+const Chart = dynamic(
+    () => {
+        return import('react-apexcharts');
+    },
+    { ssr: false }
+)
 
 export const Linechart = ({ count, date }) => {
     // const [chartCount, setChartCount] = useState()

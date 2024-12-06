@@ -15,12 +15,12 @@ export default function Headerpage({ loginToggle, signUpToggle }) {
     return (
 
         <>
-            <header className="flex justify-between bg-white items-center px-5 py-3">
+            <header className="flex justify-between bg-white items-center px-5 py-3 border border-b-gray-100">
                 <div className="text-2xl font-bold">
-                    <span className="text-gray-800">MY</span><span className="text-red-500">Recipe</span>
+                    <span className="text-gray-800">MY</span><span className="text-[#b55]">Recipe</span>
                 </div>
                 <nav className=" font-semibold">
-                    <ul className="flex space-x-6">
+                    <ul className="flex space-x-6 text-gray-800 ">
                         <li><Link href={"/home"} className='pb-5'>Home</Link></li>
                         <li><Link href={"/recipes"} className='mb-5'> Recipe</Link></li>
                         <li><Link href={"createrecipe/"} className='mb-5'>Add Recipe</Link></li>

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import 'react-quill/dist/quill.snow.css';
 import { Parser } from 'html-to-react';
 import ImageUploading from 'react-images-uploading';
-import ReadMoreArea from "@foxeian/react-read-more";
+// import ReadMoreArea from "@foxeian/react-read-more";
 import { RecipeEdit } from "@/app/components/common/recipeEdit/RecipeEdit";
 
 export default function RecipeList() {
@@ -80,10 +80,10 @@ export default function RecipeList() {
         fontSize: "10px",
     };
 
-    function stripHtml(html) {
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        return doc.body.textContent || "";
-    }
+    // function stripHtml(html) {
+    //     const doc = new DOMParser().parseFromString(html, 'text/html');
+    //     return doc.body.textContent || "";
+    // }
 
 
 
@@ -124,7 +124,7 @@ export default function RecipeList() {
                                     {Array.isArray(value.ingredients) ? value.ingredients.join(', ') : value.ingredients}
                                 </td>
                                 <td className="py-3 px-6 border-gray-300 max-w-[30px]">
-                                    <ReadMoreArea
+                                    {/* <ReadMoreArea
                                         className=" text-sm  font-medium "
                                         expandLabel="Read more"
                                         collapseLabel="Read less"
@@ -132,7 +132,7 @@ export default function RecipeList() {
                                         lettersLimit={30}
                                     >
                                         {stripHtml(value.instructions)}
-                                    </ReadMoreArea>
+                                    </ReadMoreArea> */}
                                 </td>
                                 <td className="py-3 px-6 border-gray-300">{value.categories}</td>
                                 <td className="py-3 px-6 border-gray-300"> <Image src={`/uploads/${value.files}`} alt="Recipe Image" width="100" height="100" /></td>

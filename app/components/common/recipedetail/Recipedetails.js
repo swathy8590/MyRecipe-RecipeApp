@@ -3,7 +3,8 @@ import { LatestRecipe } from "../latestRecipe/LatestRecipe";
 import { LatestUsers } from "../latestUsers/LatestUsers";
 import { RecipeTotal } from "../recipeTotal/RecipeTotal";
 import { ReviewTotal } from "../reviewTotal/ReviewTotal";
-import { TotalUsers } from "../totalUsers/TotalUsers";
+import TotalUsers from "../totalUsers/TotalUsers";
+
 
 export default function Recipedetails() {
     return (
@@ -23,3 +24,4 @@ export default function Recipedetails() {
 
     )
 }
+
