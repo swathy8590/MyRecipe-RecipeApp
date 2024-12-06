@@ -64,10 +64,10 @@ export default function Loginpage({ setLogin }) {
 
 
                     <div className="w-[70%] mx-auto  p-5 bg-white text-left border-solid border-gray-100 rounded-xl h-[70%] drop-shadow-lg  flex gap-5">
-                        <button className="absolute right-10" onClick={() => setLogin(false)}><XMarkIcon className="size-6 " /></button>
+                        <button className="absolute right-10 text-black " onClick={() => setLogin(false)}><XMarkIcon className="size-6 " /></button>
                         <div className="w-[50%] h-full  ">
                             <img src={`/asset/loginimage.jpg`} className='w-[100%] h-[100%]' />
-                            <div className="bg-red-500 z-40 w-[499px] h-[477px] absolute top-[20px] bg-opacity-40"></div>
+                            <div className="bg-red-500 z-40 w-[100%] h-[100%]  relative bottom-[100%] bg-opacity-40"></div>
 
                         </div>
 
@@ -101,7 +101,7 @@ export default function Loginpage({ setLogin }) {
                                     >Login</button>
                                 </div>
                             </form>
-                            <div className="ps-28 pt-3 ">{error}</div>
+                            <div className="ps-28 pt-3 text-black  ">{error}</div>
 
                         </div>
 

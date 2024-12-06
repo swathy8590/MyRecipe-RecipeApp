@@ -2,7 +2,16 @@
 
 
 import React from 'react'
-import Chart from 'react-apexcharts'
+import dynamic from 'next/dynamic';
+
+
+const Chart = dynamic(
+    () => {
+        return import('react-apexcharts');
+    },
+    { ssr: false }
+)
+
 
 export const ColumnChart = ({ reviewCount, reviewDate }) => {
 
@@ -92,11 +101,7 @@ export const ColumnChart = ({ reviewCount, reviewDate }) => {
     };
     return (
         <div>
-
-
             {reviewCount && reviewCount.length > 0 && <Chart options={chartData && chartData.options} series={chartData && chartData.series} type="bar" height={125} />}
-
-
         </div>
     )
 }

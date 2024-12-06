@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
 import { redirect, useRouter } from 'next/navigation'
+import { PageContext } from '@/app/(frendent)/layout';
 
 export default function AddComment({ recipeId, setGetReview, getReview }) {
     const { data, status } = useSession();
@@ -12,6 +13,9 @@ export default function AddComment({ recipeId, setGetReview, getReview }) {
     const [userName, setUserName] = useState();
     const router = useRouter()
     const [userComment, setUserComment] = useState(false)
+
+    const loginStatus = useContext(PageContext)
+    const setLogin = loginStatus.setLogin
 
     useEffect(() => {
         axios.get("/api/getuser").then((response) => setUser(response.data.data)
@@ -80,9 +84,9 @@ export default function AddComment({ recipeId, setGetReview, getReview }) {
 
 
 
-            <div className="w-[75%] my-10 mx-auto p-10 bg-white shadow-md relative">
+            <div className="w-[75%] my-10 mx-auto p-10 bg-white shadow-md relative  text-black">
                 {status === "authenticated" && data !== null ? <div>
-                    < h1 className="text-2xl font-bold  mb-[33px]  ">Add Your Reviews</h1>
+                    < h1 className="text-2xl font-bold  mb-[33px]   ">Add Your Reviews</h1>
                     <form onSubmit={userComments}>
 
 
@@ -110,7 +114,7 @@ export default function AddComment({ recipeId, setGetReview, getReview }) {
                         </div>
 
                     </form>
-                </div> : <div>Please log in to add a comment.</div>}
+                </div> : <div>Please <button onClick={() => setLogin(true)} className='text-[#b55]'>Login</button> to add a comment.</div>}
             </div >
 
 

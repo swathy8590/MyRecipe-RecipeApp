@@ -1,27 +1,27 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import axios from 'axios';
 import moment from 'moment';
+import { Linechart } from '../../linechart/Linechart';
 
-// Import Linechart dynamically with SSR disabled
-const Linechart = dynamic(() => import('../../linechart/Linechart').then((mod) => mod.Linechart), { ssr: false });
+
+
+
 
 export const RecipeTotal = () => {
     const [chartCount, setChartCount] = useState(null);
 
     useEffect(() => {
-        // Client-side data fetching
-        if (typeof window !== 'undefined') {
-            axios.get("/api/recipechart")
-                .then(response => {
-                    if (response && response.data && response.data.data) {
-                        setChartCount(response.data.data);
-                    }
-                })
-                .catch(error => console.error("Error fetching chart data:", error));
-        }
+
+        axios.get("/api/recipechart")
+            .then(response => {
+                if (response && response.data && response.data.data) {
+                    setChartCount(response.data.data);
+                }
+            })
+            .catch(error => console.error("Error fetching chart data:", error));
+
     }, []);
 
     const count = chartCount?.count || [];
@@ -37,3 +37,5 @@ export const RecipeTotal = () => {
         </div>
     );
 };
+
+

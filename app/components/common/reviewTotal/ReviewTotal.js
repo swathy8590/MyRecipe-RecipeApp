@@ -3,27 +3,25 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
+import { ColumnChart } from '../../columnchart/ColumnChart';
+// import ColumnChart from '../../columnchart/ColumnChart';
 
-// Dynamically import ColumnChart with server-side rendering disabled
-const ColumnChart = dynamic(() => import('../../columnchart/ColumnChart').then((mod) => mod.ColumnChart), { ssr: false });
 
 export const ReviewTotal = () => {
     const [review, setReview] = useState(null);
 
     useEffect(() => {
-        // Ensure data fetching happens only on the client
-        if (typeof window !== 'undefined') {
-            axios.get("/api/reviewchart")
-                .then(response => {
-                    if (response && response.data && response.data.data) {
-                        setReview(response.data.data);
-                    }
-                })
-                .catch(error => console.error("Error fetching review data:", error));
-        }
+
+        axios.get("/api/reviewchart")
+            .then(response => {
+                if (response && response.data && response.data.data) {
+                    setReview(response.data.data);
+                }
+            })
+            .catch(error => console.error("Error fetching review data:", error));
+
     }, []);
 
-    // Safely handle undefined review data
     const reviewDate = review?.date || [];
     const reviewCount = review?.count || [];
 
@@ -37,3 +35,4 @@ export const ReviewTotal = () => {
         </div>
     );
 };
+

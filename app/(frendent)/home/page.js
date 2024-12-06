@@ -61,10 +61,10 @@ export default function Home() {
                 <div className=" bg-gradient-to-r from-white to-red-100 roboto-medium">
 
                     {loginAlert && <div class=" text-center py-4 lg:px-4">
-                        <div class="p-2 bg-gradient-to-r from-red-200 to-red-100 items-center text-black leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+                        <div class="p-2 bg-gradient-to-r from-red-200 to-red-100 items-center text-gray-800 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
 
                             <span class="font-semibold mr-2 text-left flex-auto">successfully logged !</span>
-                            {/* <button type="button" class="ms-auto -mx-1.5 -my-1.5  text-black rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-1" aria-label="Close"
+                            {/* <button type="button" class="ms-auto -mx-1.5 -my-1.5  text-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-1" aria-label="Close"
 
                                 onClick={closefn}>
                                 <XMarkIcon />
@@ -79,17 +79,14 @@ export default function Home() {
                                 alt="Noodles"
                                 width={800}
                                 height={800}
-                                className="w-[100px] mb-10 absolute top-[24%] left-[33%]" />
+                                className="w-[100px] relative top-[120px] left-[71%]" />
                             <h1 className="text-5xl font-bold text-gray-800">
                                 Your Daily Dish
                                 <br />
-                                <span className="text-red-500">A Food Journey</span>
+                                <span className="text-[#b55]">A Food Journey</span>
                             </h1>
                             <p className="text-gray-500 mt-4">
-                                Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit.
-                                Maecenas vitae enim pharetra,
-                                venenatis nunc eget, finibus est.
+                                Discover delicious recipes from around the world and create unforgettable meals at home. Your culinary journey starts here!
                             </p>
                         </div>
 
@@ -111,7 +108,7 @@ export default function Home() {
                         <img src={`/asset/addrecipe.jpg`} className='w-[250px] h-[250px]' />
 
                     </div>
-                    <div className='w-3/6 flex justify-center flex-col   '>
+                    <div className='w-3/6 flex justify-center flex-col  text-gray-800  '>
                         <h1 className="text-4xl ps-16  font-bold">Share Your Recipes</h1>
                         <p className="text-gray-500 mt-4 text-center w-[60%]">
                             Creating your own recipe on a
@@ -128,7 +125,7 @@ export default function Home() {
                 </div>
 
                 <div className='bg-white w-full h-auto'>
-                    <h3 className="text-3xl font-bold text-gray-800 p-5 text-center">
+                    <h3 className="text-3xl font-bold text-gray-800 px-5 pt-8 text-center">
                         Trending Recipes
                     </h3>
                     <div className='flex overflow-scroll scrollbar-hide p-5 gap-6  '>
@@ -143,12 +140,12 @@ export default function Home() {
                                             height={300}
                                             className='w-full h-full rounded-md' /></Link>
                                 </div>
-                                <p className='pt-2 font-semibold '>{value.title}</p>
+                                <p className='pt-2 font-semibold text-gray-800 '>{value.title}</p>
                             </div>)}
                     </div>
                 </div>
                 <div>
-                    <div className='my-12 flex justify-center'>
+                    <div className='my-5 flex justify-center'>
                         <div className='w-[18%]'>
                             <Link href={"allrecipes"}>
                                 <button className=" px-12 flex gap-5 py-2 mt-4  bg-[#b55] text-white rounded-md " >

@@ -7,16 +7,16 @@ export const LatestRecipe = () => {
     const [recipe, setRecipe] = useState([]);
 
     useEffect(() => {
-        // Ensure the data fetching happens on the client
-        if (typeof window !== 'undefined') {
-            axios.get("/api/getRecipe")
-                .then(response => {
-                    if (response && response.data && response.data.data) {
-                        setRecipe(response.data.data);
-                    }
-                })
-                .catch(error => console.error("Error fetching recipe data:", error));
-        }
+
+
+        axios.get("/api/getRecipe")
+            .then(response => {
+                if (response && response.data && response.data.data) {
+                    setRecipe(response.data.data);
+                }
+            })
+            .catch(error => console.error("Error fetching recipe data:", error));
+
     }, []);
 
     return (
@@ -64,3 +64,5 @@ export const LatestRecipe = () => {
         </div>
     );
 };
+
+
