@@ -43,7 +43,7 @@ export const SignUp = ({ setsignup }) => {
                         <div className="bg-red-500 z-40 w-[499px] h-[477px] absolute top-[20px] bg-opacity-40"></div>
 
                     </div>
-                    <button className="absolute right-10" onClick={() => setsignup(false)}><XMarkIcon className="size-6 " /></button>
+                    <button className="absolute right-10" onClick={() => setsignup(false)}><XMarkIcon className="size-6 text-black " /></button>
                     <div className="flex flex-col ps-10 pt-10 w-[50%]">
                         <h1 className=" text-2xl font-semibold mb-8 text-gray-800"> SIGN UP</h1>
                         <form method='post' onSubmit={handleSubmit}>
@@ -54,7 +54,7 @@ export const SignUp = ({ setsignup }) => {
                                     placeholder="name"
                                     type='text'
                                     required
-                                    className="border-solid border-[#b55] drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
+                                    className="border-solid border-[#b55] drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4 text-gray-800" />
 
                             </div>
                             <div className="pb-8 ">
@@ -63,7 +63,7 @@ export const SignUp = ({ setsignup }) => {
                                     placeholder="Email"
                                     type='email'
                                     required
-                                    className="border-solid border-[#b55] drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
+                                    className="border-solid border-[#b55] drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4 text-gray-800" />
 
                             </div>
                             <div className="pb-8">
@@ -72,7 +72,7 @@ export const SignUp = ({ setsignup }) => {
                                     placeholder="password"
                                     type='password'
                                     required
-                                    className="border-solid border-[#b55] drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
+                                    className="border-solid border-[#b55] drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4 text-gray-800" />
 
                             </div>
 

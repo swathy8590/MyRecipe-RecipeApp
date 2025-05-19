@@ -16,7 +16,7 @@ export default function Home() {
 
     return (
         <>
-            <div className='p-4 text-gray-800 h-[90vh]' >
+            <div className='p-4 text-gray-800 min-h-[90vh]  bg-white' >
                 <h2 className='text-3xl font-bold pb-2 ms-5'>All Recipes </h2>
                 <div className='grid grid-cols-5 scrollbar-hide p-5 gap-10  '>
                     {recipes && recipes.map((value, index) =>

@@ -38,7 +38,7 @@ export const RecipeEdit = ({ editIndex, index, value, setEditIndex, categorie, i
             formData.append("files", file);
         }
         formData.append('instructions', instructions);
-        formData.append('categories', categoryData);
+        // formData.append('categories', categoryData);
         formData.append('recipeStatus', recipeStatus);
 
 
@@ -85,7 +85,7 @@ export const RecipeEdit = ({ editIndex, index, value, setEditIndex, categorie, i
                                         isRequired
                                         placeholder="Select ingredients"
                                         aria-label="ingredients"
-                                        className="rounded-md border-solid border-gray-200 border-[1px] custom-select h-11 w-full pt-1"
+                                        className="rounded-md border-solid border-gray-200 border-[1px] custom-select h-11 w-full pt-3"
                                         selectionMode="multiple"
                                         dropdownPlacement="right"
                                         labelPlacement="outside"
@@ -96,7 +96,7 @@ export const RecipeEdit = ({ editIndex, index, value, setEditIndex, categorie, i
                                         }}
                                     >
                                         {ingredients.map((ingredient) => (
-                                            <SelectItem key={ingredient.label} className="bg-gray-100 p-2">
+                                            <SelectItem key={ingredient.label} className="bg-gray-700 text-gray-200 p-2">
                                                 {ingredient?.value}
                                             </SelectItem>
                                         ))}
@@ -110,7 +110,7 @@ export const RecipeEdit = ({ editIndex, index, value, setEditIndex, categorie, i
                                         isRequired
                                         placeholder="Select categories"
                                         aria-label="categories"
-                                        className="rounded-md border-solid border-gray-200 border-[1px] custom-select h-11 w-full pt-1"
+                                        className="rounded-md border-solid border-gray-200 border-[1px] custom-select h-11 w-full pt-3"
                                         selectionMode="multiple"
                                         dropdownPlacement="right"
                                         labelPlacement="outside"
@@ -122,7 +122,7 @@ export const RecipeEdit = ({ editIndex, index, value, setEditIndex, categorie, i
                                     >
                                         {categorie.map((values) => (
                                             <SelectItem key={values.category}
-                                                className="bg-gray-100 p-2">
+                                                className="bg-gray-700 text-gray-200 p-2">
                                                 {values.category}
                                             </SelectItem>
                                         ))}

@@ -10,7 +10,7 @@ const Footer = ({ createRecipe }) => {
     return (
         <>
             <footer className="bg-gray-200 py-10 px-14 ">
-                <div className="container mx-auto flex gap-[11%] ">
+                <div className="container mx-auto grid grid-cols-5  ">
                     {/* Social Media Section */}
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
                         <div className="mb-4">

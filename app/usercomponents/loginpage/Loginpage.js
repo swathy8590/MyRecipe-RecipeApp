@@ -82,7 +82,7 @@ export default function Loginpage({ setLogin }) {
                                         placeholder="email"
                                         type='text'
                                         required
-                                        className="border-solid border-[#b55]  drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
+                                        className="border-solid border-[#b55]  drop-shadow-sm border-[1px] w-[75%] h-[44px] rounded-lg px-4 text-gray-800" />
 
                                 </div>
                                 <div className="pb-8">
@@ -91,7 +91,7 @@ export default function Loginpage({ setLogin }) {
                                         placeholder="password"
                                         type='password'
                                         required
-                                        className="border-solid border-[#b55]  drop-shadow-md border-[1px] w-[75%] h-[44px] rounded-lg px-4" />
+                                        className="border-solid border-[#b55]  drop-shadow-md border-[1px] w-[75%] h-[44px] rounded-lg px-4 text-gray-800 " />
 
                                 </div>
 

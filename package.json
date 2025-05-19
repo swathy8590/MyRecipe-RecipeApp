@@ -20,6 +20,7 @@
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
     "formidable": "^3.5.1",
+    "framer-motion": "^11.17.0",
     "fs": "^0.0.1-security",
     "fs.promises": "^0.1.2",
     "html-to-react": "^1.7.0",
@@ -37,6 +38,7 @@
     "react-dom": "^18.3.1",
     "react-images-uploading": "^3.1.7",
     "react-quill": "^2.0.0",
+    "react-search-box": "^3.0.0",
     "react-select": "^5.8.1",
     "react-spinners": "^0.14.1",
     "read-more-react": "^1.0.10",
@@ -47,6 +49,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.12",
     "postcss": "^8",
+    "react-js-search": "^0.4.0",
     "tailwindcss": "^3.4.1"
   }
 }

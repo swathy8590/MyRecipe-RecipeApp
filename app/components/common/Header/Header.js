@@ -32,10 +32,13 @@ export default function Header({ children }) {
                 <div className={`min-h-screen flex flex-col bg-[#1D222B] ${open ? "w-[80%]" : "w-full"} absolute ${open ? "left-[290px]" : "left-0"} transition-all duration-300`}>
                     <header className="bg-[#212631] p-4 shadow-lg h-[50px]">
                         <div className={`fixed inset-y-0 left-0 transform ${open ? "translate-x-0" : "-translate-x-full"} w-[20%] bg-gray-800 text-white transition-transform duration-300 ease-in-out z-50`}>
-                            <div className="p-4 text-lg font-medium text-center">
-                                <Link href="/dashboard">
-                                    <span className="text-gray-100 text-lg">MY</span>
-                                    <span className="text-red-500 text-lg font-medium">Recipe</span>
+                            <div className="px-4 text-lg font-medium text-center ">
+                                <Link href="/dashboard" className="flex justify-center ">
+                                    {/* <span className="text-gray-100 text-lg">MY</span>
+                                    <span className="text-red-500 text-lg font-medium">Recipe</span> */}
+                                    <img src="/asset/logosss.png" className="h-[70px]" />
+
+
                                 </Link>
                             </div>
                             <div className="p-2 text-base font-medium">

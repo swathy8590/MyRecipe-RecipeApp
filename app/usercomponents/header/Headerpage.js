@@ -22,7 +22,7 @@ export default function Headerpage({ loginToggle, signUpToggle }) {
                 <nav className=" font-semibold">
                     <ul className="flex space-x-6 text-gray-800 ">
                         <li><Link href={"/home"} className='pb-5'>Home</Link></li>
-                        <li><Link href={"/recipes"} className='mb-5'> Recipe</Link></li>
+                        <li><Link href={"/allrecipes"} className='mb-5'> Recipe</Link></li>
                         <li><Link href={"createrecipe/"} className='mb-5'>Add Recipe</Link></li>
                     </ul>
                 </nav>

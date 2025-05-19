@@ -216,7 +216,7 @@ export default function Createrecipe() {
                                     }}
                                 >
                                     {category.map((value) => (
-                                        <SelectItem key={value.category} value={value.description} className="bg-gray-100 p-2">
+                                        <SelectItem key={value.category} value={value.description} className="bg-gray-100 text-gray-800 p-2">
                                             {value.description}
                                         </SelectItem>
                                     ))}
