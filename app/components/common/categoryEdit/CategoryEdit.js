@@ -25,24 +25,24 @@ export const CategoryEdit = ({ value, setEditIndex, setCategorie }) => {
 
 
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
-                <div className="bg-white w-full max-w-lg p-8 rounded-2xl shadow-xl text-left">
+                <div className="bg-[#1F2937] text-[#e3e4e6] w-full max-w-lg p-8 rounded-2xl shadow-xl text-left">
                     <h2 className="text-2xl font-semibold mb-4">Edit Item</h2>
                     <form onSubmit={(e) => CategorieUpdate(e, value._id)}>
                         <div className="mb-4">
-                            <label className="block text-gray-700 mb-2">Categories </label>
+                            <label className="block mb-2">Categories </label>
                             <input
                                 name="category"
                                 defaultValue={value.category}
-                                className="w-full border border-gray-300 rounded-lg p-3"
+                                className="w-full border border-gray-300 bg-[#1F2937] text-[#e3e4e6] rounded-lg p-3"
                                 required
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 mb-2">Description</label>
+                            <label className="block  mb-2">Description</label>
                             <input
                                 name="description"
                                 defaultValue={value.description}
-                                className="w-full border border-gray-300 rounded-lg p-3"
+                                className="w-full border border-gray-300 bg-[#1F2937] text-[#e3e4e6] rounded-lg p-3"
                                 required
                             />
                         </div>
@@ -50,7 +50,7 @@ export const CategoryEdit = ({ value, setEditIndex, setCategorie }) => {
                         <div className="flex justify-end space-x-2">
                             <button
                                 type="submit"
-                                className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg transition"
+                                className="bg-blue-800 hover:bg-blue-950 text-white px-4 py-2 rounded-lg transition"
                             >
                                 Save
                             </button>

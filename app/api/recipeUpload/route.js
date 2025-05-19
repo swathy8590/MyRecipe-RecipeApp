@@ -14,6 +14,8 @@ export async function POST(req) {
 
     const file = await formdata.getAll("files")[0]
 
+    console.log(file)
+
     const filepath = `./public/uploads/${new Date().getTime()}${file.name}`
     const imagepath = `${new Date().getTime()}${file.name}`
 

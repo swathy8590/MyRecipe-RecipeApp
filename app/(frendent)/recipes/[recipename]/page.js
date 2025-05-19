@@ -42,14 +42,14 @@ export default function Recipes({ params }) {
     // }
     const { recipename } = params
 
-    if (status === "loading") {
-        return <RingLoader
-            color="#ff0202"
-            cssOverride={{}}
-            loading
-            speedMultiplier={0}
-        />
-    }
+    // if (status === "loading") {
+    //     return <RingLoader
+    //         color="#ff0202"
+    //         cssOverride={{}}
+    //         loading
+    //         speedMultiplier={0}
+    //     />
+    // }
 
     return (
         <>
@@ -77,7 +77,7 @@ export default function Recipes({ params }) {
                                         <span className=" font-semibold  text-lg " >Categorie:</span>{value.categories.join(', ')}
                                     </div>
                                     <div className='pt-2  text-black'>
-                                        <span className=" font-semibold  text-lg ">Ingredients:</span>{value.ingredients.join(', ')}
+                                        <span className=" font-semibold  text-lg ">Ingredients:</span>{value.ingredients.join(",")}
                                     </div>
 
                                 </div>

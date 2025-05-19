@@ -20,7 +20,7 @@ const ReactQuill = dynamic(
     { ssr: false }
 );
 
-export function RecipeAdd({ setMessage, setadd }) {
+export default function RecipeAdd({ setMessage, setadd }) {
     const [category, setCategory] = useState([]);
     const [IngredientData, setIngredientData] = useState([]);
     const [file, setFile] = useState(null);
@@ -77,8 +77,10 @@ export function RecipeAdd({ setMessage, setadd }) {
     };
 
     const handleImageUpload = (event) => {
+
         setFile(event.target.files[0]);
     };
+    console.log(file);
     return (
         <>
             <div className="fixed inset-0 flex justify-center bg-black bg-opacity-50 z-40">
