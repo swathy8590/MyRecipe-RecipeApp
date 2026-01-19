@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { categoryModel } from "@/app/models/models"
 import { dbConnect } from "@/app/libi/db"
-import mongoose from "mongoose";
+
 
 
 export async function GET(res, rer) {
